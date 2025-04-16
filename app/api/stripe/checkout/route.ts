@@ -4,7 +4,7 @@ import stripe from '@/app/lib/stripe';
 export async function POST(req: NextRequest) {
     const { testId, userEmail } = await req.json();
 
-    const price = process.env.STRIPE_PRICE_ID;
+    const price = process.env.STRIPE_PRODUCT_ID;
 
     if (!price) {
         return NextResponse.json(
