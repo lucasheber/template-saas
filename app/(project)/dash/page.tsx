@@ -1,5 +1,6 @@
 import { handleLogout } from "@/app/actions/handle-auth";
 import { auth } from "@/app/lib/auth";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function Dashboard() {
@@ -14,6 +15,9 @@ export default async function Dashboard() {
       <h1 className="text-4xl font-bold">Dashboard</h1>
       <p className="text-2xl font-semibold">Welcome, {session?.user?.name}</p>
 
+      <Link href="/payments">
+        <button className="btn btn-primary border">Payments</button>
+      </Link>
       {session?.user?.email && (
         // logout button
         <div className="flex flex-col items-center justify-center min-h-screen">
