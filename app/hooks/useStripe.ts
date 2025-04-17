@@ -15,7 +15,7 @@ export function useStripe() {
         loadStripeAsync();
     }, []);
 
-    async function createPaymentStripeCheckout(checkoutData: any) {
+    async function createPaymentStripeCheckout(checkoutData: {testId: string, userEmail: string}) {
         if (!stripe) {
             throw new Error("Stripe not loaded");
         }
@@ -41,7 +41,7 @@ export function useStripe() {
         }
     }
 
-    async function createSubscriptionStripeCheckout(checkoutData: any) {
+    async function createSubscriptionStripeCheckout(checkoutData: {testId: string, userEmail: string}) {
         if (!stripe) {
             throw new Error("Stripe not loaded");
         }
