@@ -33,9 +33,9 @@ export async function POST(req: NextRequest) {
                 },
                 auto_return: "approved",
                 back_urls: {
-                    success: `${process.env.NEXT_PUBLIC_URL}/success`,
-                    failure: `${process.env.NEXT_PUBLIC_URL}/failure`,
-                    pending: `${process.env.NEXT_PUBLIC_URL}/pending`,
+                    success: `${req.headers.get('origin')}/success`,
+                    failure: `${req.headers.get('origin')}/failure`,
+                    pending: `${req.headers.get('origin')}/pending`,
                 },
             }
         });
