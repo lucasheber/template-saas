@@ -2,7 +2,7 @@ import { db } from '@/app/lib/firebase';
 import 'server-only';
 import Stripe from "stripe";
 
-export async function handleSessionCompleted(event: Stripe.Event) {
+export async function handleSessionCompleted(event: Stripe.CheckoutSessionCompletedEvent) {
     console.log("Session completed", event);
 
     // check if the price is a onetime payment or a subscription
