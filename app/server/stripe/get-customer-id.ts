@@ -3,7 +3,14 @@ import 'server-only';
 import { db } from '@/app/lib/firebase';
 import stripe from '@/app/lib/stripe';
 
-export async function getOrCreateCustomerId(userId: string) {
+/**
+ * This function retrieves or creates a Stripe customer ID for a given user.
+ * 
+ * @param userId - The ID of the user for whom to get or create a Stripe customer ID.
+ * @returns The Stripe customer ID.
+ * @throws Error - If the user is not found or if there is an error creating the Stripe customer.
+ */
+export async function getOrCreateCustomerId(userId: string): Promise<string> {
     try {
         const userRef = db.collection("users").doc(userId);
         const userDoc = await userRef.get();
@@ -13,7 +20,7 @@ export async function getOrCreateCustomerId(userId: string) {
         }
 
         const userData = userDoc.data();
-        const stripeCustomerId = userData?.stripeCustomerId;
+        const stripeCustomerId: string = userData?.stripeCustomerId;
 
         if (stripeCustomerId) {
             return stripeCustomerId;
@@ -40,7 +47,3 @@ export async function getOrCreateCustomerId(userId: string) {
         throw new Error("Failed to get or create Stripe customer ID");
     }
 }
-// This function is used to get or create a Stripe customer ID for a user.
-// It first checks if the user already has a Stripe customer ID stored in Firestore.
-// If the user does not have a Stripe customer ID, it creates a new Stripe customer
-// and saves the Stripe customer ID to Firestore.
