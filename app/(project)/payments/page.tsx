@@ -23,7 +23,7 @@ export default function Payments() {
         {" "}
         Create Payment{" "}
       </button>
-      <button className="btn btn-primary border p-2 mb-2 w-100" onClick={() => createSubscriptionStripeCheckout({})}>
+      <button className="btn btn-primary border p-2 mb-2 w-100" onClick={() => createSubscriptionStripeCheckout(params)}>
         {" "}
         Create Subscription{" "}
       </button>
